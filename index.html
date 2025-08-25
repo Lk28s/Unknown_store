@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DRIP CLIENT | O Melhor MOD para Mobile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0a0a2a, #1a1a3a);
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        header {
+            background: rgba(10, 10, 30, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 20px 5%;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: #00f3ff;
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            animation: pulse 2s infinite;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: #00f3ff;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #00f3ff;
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 100px 5% 50px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%2300f3ff" fill-opacity="0.1" d="M0,128L48,138.7C96,149,192,171,288,186.7C384,203,480,213,576,202.7C672,192,768,160,864,138.7C960,117,1056,107,1152,112C1248,117,1344,139,1392,149.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+            background-size: cover;
+            z-index: -1;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(0, 243, 255, 0.7);
+            animation: fadeIn 1s forwards;
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin-bottom: 30px;
+            color: #ccc;
+            animation: fadeIn 1.5s forwards;
+        }
+        
+        .features {
+            padding: 80px 5%;
+            background: rgba(10, 10, 40, 0.6);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: #00f3ff;
+            text-shadow: 0 0 15px rgba(0, 243, 255, 0.5);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: rgba(20, 20, 50, 0.7);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .feature-icon {
+            font-size: 50px;
+            color: #00f3ff;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .feature-card p {
+            color: #ccc;
+        }
+        
+        .pricing {
+            padding: 80px 5%;
+            background: rgba(15, 15, 35, 0.8);
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .pricing-card {
+            background: rgba(25, 25, 55, 0.8);
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: transform 0.3s;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .pricing-card.popular {
+            border: 2px solid #00f3ff;
+            transform: scale(1.05);
+        }
+        
+        .pricing-card.popular::before {
+            content: 'POPULAR';
+            position: absolute;
+            top: 15px;
+            right: -30px;
+            background: #00f3ff;
+            color: #000;
+            padding: 5px 30px;
+            font-size: 14px;
+            font-weight: 700;
+            transform: rotate(45deg);
+        }
+        
+        .pricing-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #00f3ff;
+        }
+        
+        .price {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .price span {
+            font-size: 1rem;
+            color: #ccc;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .pricing-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #00f3ff, #0099ff);
+            color: #000;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 243, 255, 0.4);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 243, 255, 0.6);
+        }
+        
+        .btn i {
+            margin-left: 5px;
+        }
+        
+        .promo-banner {
+            background: linear-gradient(45deg, #ff00cc, #00f3ff);
+            padding: 20px;
+            text-align: center;
+            margin: 40px 0;
+            border-radius: 10px;
+            animation: pulseBackground 3s infinite;
+        }
+        
+        .promo-banner h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        footer {
+            background: #0a0a1a;
+            padding: 40px 5%;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .social-icons {
+            margin: 20px 0;
+        }
+        
+        .social-icons a {
+            color: #fff;
+            font-size: 24px;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: #00f3ff;
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            color: #ccc;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes pulseBackground {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 15px;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .pricing-card.popular {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <i class="fas fa-tint"></i>
+            DRIP CLIENT
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#features">Recursos</a></li>
+                <li><a href="#pricing">Preços</a></li>
+                <li><a href="#support">Suporte</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>DRIP CLIENT | MOBILE</h1>
+        <p>O mod mais avançado para experiência mobile com Aimbot, ESP e muito mais!</p>
+        <a href="#pricing" class="btn">Comprar Agora <i class="fas fa-arrow-right"></i></a>
+    </section>
+
+    <section class="features" id="features">
+        <h2 class="section-title">Recursos Principais</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-crosshairs"></i>
+                </div>
+                <h3>Aimbot Legit</h3>
+                <p>Melhore sua precisão com o aimbot mais natural do mercado, indetectável e altamente customizável.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-eye"></i>
+                </div>
+                <h3>Silent Aim</h3>
+                <p>Fov de aimbot para limitar os alvos, matando so inimigos dentro do circulo, Nao chama atenção e é perfeito pra apostados.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-skull"></i>
+                </div>
+                <h3>Aim Kill</h3>
+                <p>Elimine inimigos sem nem mesmo precisar atirar, você mata todos atras das paredes sem erro.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>No Recoil</h3>
+                <p>Elimine o espalhamento das balas e de todas as armas para disparos precisos e controlados.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-user-secret"></i>
+                </div>
+                <h3>ESP</h3>
+                <p>Veja através das paredes e identifique a localização de todos os jogadores no mapa.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>Speed Hack</h3>
+                <p>Aumente sua velocidade de movimento e ganhe vantagem sobre seus oponentes.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+        <h2 class="section-title">Planos e Preços</h2>
+        
+        <div class="promo-banner">
+            <h2>PROMOÇÃO ILIMITADA!</h2>
+            <p>Desconto especial por tempo limitado</p>
+        </div>
+        
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>1 DIA</h3>
+                <div class="price">R$ 11,00</div>
+                <ul class="pricing-features">
+                    <li>Acesso completo por 1 dia</li>
+                    <li>Todos os recursos liberados</li>
+                    <li>Suporte prioritário</li>
+                    <li>Atualizações inclusas</li>
+                </ul>
+                <a href="https://wa.me/5511960140371?text=Olá!%20Gostaria%20de%20comprar%20o%20DRIP%20CLIENT%20-%20Plano%201%20DIA%20por%20R$%2011,00" class="btn">Comprar Agora</a>
+            </div>
+            
+            <div class="pricing-card popular">
+                <h3>7 DIAS</h3>
+                <div class="price">R$ 34,00</div>
+                <ul class="pricing-features">
+                    <li>Acesso completo por 7 dias</li>
+                    <li>Todos os recursos liberados</li>
+                    <li>Suporte prioritário</li>
+                    <li>Atualizações inclusas
+</li>
+                </ul>
+                <a href="https://wa.me/5511960140371?text=Olá!%20Gostaria%20de%20comprar%20o%20DRIP%20CLIENT%20-%20Plano%207%20DIAS%20por%20R$%2034,00" class="btn">Comprar Agora</a>
+            </div>
+            
+            <div class="pricing-card">
+                <h3>15 DIAS</h3>
+                <div class="price">R$ 44,00</div>
+                <ul class="pricing-features">
+                    <li>Acesso completo por 15 dias</li>
+                    <li>Todos os recursos liberados</li>
+                    <li>Suporte prioritário</li>
+                    <li>Atualizações inclusas
+</li>
+                </ul>
+                <a href="https://wa.me/5511960140371?text=Olá!%20Gostaria%20de%20comprar%20o%20DRIP%20CLIENT%20-%20Plano%2015%20DIAS%20por%20R$%2044,00" class="btn">Comprar Agora</a>
+            </div>
+            
+            <div class="pricing-card">
+                <h3>30 DIAS</h3>
+                <div class="price">R$ 65,00</div>
+                <ul class="pricing-features">
+                    <li>Acesso completo por 30 dias</li>
+                    <li>Todos os recursos liberados</li>
+                    <li>Suporte prioritário 24/7</li>
+                    <li>Atualizações inclusas</li>
+                </ul>
+                <a href="https://wa.me/5511960140371?text=Olá!%20Gostaria%20de%20comprar%20o%20DRIP%20CLIENT%20-%20Plano%2030%20DIAS%20por%20R$%2065,00" class="btn">Comprar Agora</a>
+            </div>
+        </div>
+    </section>
+
+    <footer id="support">
+        <div class="footer-content">
+            <div class="logo">
+                <i class="fas fa-tint"></i>
+                DRIP CLIENT
+            </div>
+            <p>O melhor MOD para experiência mobile</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-discord"></i></a>
+                <a href="#"><i class="fab fa-telegram"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p class="copyright">© 2025 UNKNOWN STORE. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Adiciona animação de scroll suave para os links do menu
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Adiciona efeito de máquina de escrever no título principal
+        const titleText = "DRIP CLIENT | MOBILE";
+        let titleElement = document.querySelector('.hero h1');
+        titleElement.textContent = "";
+        let i = 0;
+        
+        function typeWriter() {
+            if (i < titleText.length) {
+                titleElement.textContent += titleText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        }
+        
+        // Inicia a animação quando a página carrega
+        window.addEventListener('load', typeWriter);
+        
+        // Adiciona animação de aparecimento aos elementos ao rolar
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeIn 1s forwards';
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.feature-card, .pricing-card').forEach(card => {
+            card.style.opacity = '0';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
