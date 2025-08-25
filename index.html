@@ -6,6 +6,21 @@
     <title>DRIP CLIENT | MOBILE MOD</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* RESET E ESTILOS GERAIS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a0638, #2d0b5e, #1a0638);
+            color: #fff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
         /* TELA DE CARREGAMENTO */
         #loader {
             position: fixed;
@@ -67,22 +82,9 @@
             font-size: 0.9rem;
         }
         
-        /* ESTILOS PRINCIPAIS */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background: linear-gradient(135deg, #1a0638, #2d0b5e);
-            color: #fff;
-            overflow-x: hidden;
-        }
-        
+        /* HEADER */
         header {
-            background: rgba(26, 6, 56, 0.9);
+            background: rgba(26, 6, 56, 0.95);
             backdrop-filter: blur(10px);
             padding: 20px 5%;
             position: fixed;
@@ -150,6 +152,7 @@
             width: 100%;
         }
         
+        /* HERO SECTION */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -177,54 +180,89 @@
         .drip-bucket {
             position: relative;
             margin-bottom: 30px;
+            width: 120px;
+            height: 120px;
         }
         
         .bucket {
-            font-size: 80px;
-            color: #6a11cb;
-            filter: drop-shadow(0 0 10px rgba(106, 17, 203, 0.7));
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #8a2be2, #6a11cb);
+            border-radius: 10px 10px 5px 5px;
             position: relative;
-            z-index: 2;
+            transform: perspective(300px) rotateX(30deg);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 0 20px rgba(185, 103, 255, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .bucket::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: linear-gradient(135deg, #6a11cb, #4a088c);
+            border-radius: 5px 5px 0 0;
+        }
+        
+        .bucket-handle {
+            position: absolute;
+            top: -15px;
+            width: 60px;
+            height: 30px;
+            border: 8px solid #4a088c;
+            border-bottom: none;
+            border-radius: 50% 50% 0 0;
+            box-shadow: 0 0 10px rgba(185, 103, 255, 0.5);
         }
         
         .drip {
             position: absolute;
-            top: 50px;
+            top: 100px;
             left: 50%;
             transform: translateX(-50%);
-            width: 20px;
-            height: 50px;
-            background: linear-gradient(to bottom, #b967ff, #6a11cb);
-            border-radius: 0 0 10px 10px;
+            width: 15px;
+            height: 40px;
+            background: linear-gradient(to bottom, #b967ff, #8a2be2);
+            border-radius: 0 0 8px 8px;
             animation: dripAnimation 3s infinite;
         }
         
         .drop {
             position: absolute;
-            top: 100px;
+            top: 140px;
             left: 50%;
-            width: 15px;
-            height: 15px;
+            width: 12px;
+            height: 12px;
             background: #b967ff;
             border-radius: 50%;
             transform: translateX(-50%);
             animation: dropAnimation 3s infinite;
             opacity: 0;
+            box-shadow: 0 0 10px rgba(185, 103, 255, 0.7);
         }
         
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 20px;
             text-shadow: 0 0 20px rgba(185, 103, 255, 0.7);
+            background: linear-gradient(135deg, #b967ff, #6a11cb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
         .hero p {
             font-size: 1.5rem;
             max-width: 800px;
             margin-bottom: 30px;
-            color: #ccc;
+            color: #d8b6ff;
         }
         
+        /* FEATURES SECTION */
         .features {
             padding: 80px 5%;
             background: rgba(20, 5, 45, 0.6);
@@ -315,12 +353,14 @@
         .feature-card h3 {
             font-size: 1.8rem;
             margin-bottom: 15px;
+            color: #fff;
         }
         
         .feature-card p {
-            color: #ccc;
+            color: #d8b6ff;
         }
         
+        /* PRICING SECTION */
         .pricing {
             padding: 80px 5%;
             background: rgba(25, 8, 50, 0.8);
@@ -407,7 +447,7 @@
         
         .price span {
             font-size: 1rem;
-            color: #ccc;
+            color: #d8b6ff;
         }
         
         .pricing-features {
@@ -418,6 +458,7 @@
         .pricing-features li {
             padding: 10px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #d8b6ff;
         }
         
         .btn {
@@ -504,6 +545,7 @@
             z-index: 1;
         }
         
+        /* FOOTER */
         footer {
             background: #0f0525;
             padding: 40px 5%;
@@ -538,10 +580,10 @@
         
         .copyright {
             margin-top: 20px;
-            color: #ccc;
+            color: #d8b6ff;
         }
         
-        /* Animações */
+        /* ANIMAÇÕES */
         .animate-on-scroll {
             opacity: 0;
             transform: translateY(20px);
@@ -605,10 +647,10 @@
                 height: 10px;
             }
             30% {
-                height: 50px;
+                height: 40px;
             }
             40% {
-                height: 50px;
+                height: 40px;
             }
             100% {
                 height: 10px;
@@ -618,26 +660,27 @@
         @keyframes dropAnimation {
             0% {
                 opacity: 0;
-                top: 100px;
+                top: 140px;
             }
             30% {
                 opacity: 1;
-                top: 100px;
+                top: 140px;
             }
             40% {
                 opacity: 1;
-                top: 150px;
+                top: 180px;
             }
             41% {
                 opacity: 0;
-                top: 150px;
+                top: 180px;
             }
             100% {
                 opacity: 0;
-                top: 100px;
+                top: 140px;
             }
         }
         
+        /* RESPONSIVIDADE */
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
@@ -681,8 +724,13 @@
                 width: 250px;
             }
             
-            .bucket {
-                font-size: 60px;
+            .drip-bucket {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
             }
         }
     </style>
@@ -716,7 +764,9 @@
 
     <section class="hero">
         <div class="drip-bucket">
-            <div class="bucket">🪣</div>
+            <div class="bucket">
+                <div class="bucket-handle"></div>
+            </div>
             <div class="drip"></div>
             <div class="drop"></div>
         </div>
@@ -953,4 +1003,4 @@
         });
     </script>
 </body>
-    </html>
+                    </html>
